@@ -1,0 +1,90 @@
+
+
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+
+# Name of this project
+name: Terraform AZURE SUBNET
+
+# License of this project
+license: "APACHE"
+
+# Canonical GitHub repo
+github_repo: clouddrove/terraform-azure-subnet
+
+# Badges to display
+badges:
+  - name: "Terraform"
+    image: "https://img.shields.io/badge/Terraform-v1.0.0-green"
+    url: "https://www.terraform.io"
+  - name: "Licence"
+    image: "https://img.shields.io/badge/License-APACHE-blue.svg"
+    url: "LICENSE.md"
+
+#  description of this project
+description: |-
+  Terraform module to create subnet resource on AZURE.
+# extra content
+include:
+  - "terraform.md"
+
+# How to use this project
+# yamllint disable rule:line-length
+usage: |-
+  ### Simple Example
+  Here is an example of how you can use this module in your inventory structure:
+  ### Default Subnet
+  ```hcl
+    module "subnet" {
+      source               = "clouddrove/subnet/azure"
+      name                 = "app"
+      environment          = "test"
+      label_order          = ["name", "environment"]
+      resource_group_name  = module.resource_group.resource_group_name
+      location             = module.resource_group.resource_group_location
+      virtual_network_name = join("", module.vnet.vnet_name)
+
+      #subnet
+      default_name_subnet = true
+      subnet_names        = ["subnet1", "subnet2"]
+      subnet_prefixes     = ["10.0.1.0/24", "10.0.2.0/24"]
+    }
+  ```
+  ### Name_Specific Subnet
+  ```hcl
+    module "name_specific_subnet" {
+      source               = "clouddrove/subnet/azure"
+      name                 = "app"
+      environment          = "test"
+      label_order          = ["name", "environment"]
+      resource_group_name  = module.resource_group.resource_group_name
+      location             = module.resource_group.resource_group_location
+      virtual_network_name = join("", module.vnet.vnet_name)
+
+      #subnet
+      specific_name_subnet  = true
+      specific_subnet_names = "GatewaySubnet"
+      subnet_prefixes       = ["10.0.1.0/24"]
+    }
+  ```
+  ### Nat_Gateway_Subnet
+  ```hcl
+    module "name_specific_subnet" {
+      source               = "clouddrove/subnet/azure"
+      name                 = "app"
+      environment          = "test"
+      label_order          = ["name", "environment"]
+      resource_group_name  = module.resource_group.resource_group_name
+      location             = module.resource_group.resource_group_location
+      virtual_network_name = join("", module.vnet.vnet_name)
+
+      #subnet
+      default_name_subnet = true
+      create_nat_gateway  = true
+      subnet_names        = ["subnet1", "subnet2"]
+      subnet_prefixes     = ["10.0.1.0/24", "10.0.2.0/24"]
+    }
