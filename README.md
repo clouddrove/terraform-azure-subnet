@@ -106,6 +106,7 @@ Here is an example of how you can use this module in your inventory structure:
     subnet_names        = ["subnet1", "subnet2"]
     subnet_prefixes     = ["10.0.1.0/24", "10.0.2.0/24"]
   }
+```
 
 
 
