@@ -142,6 +142,26 @@ variable "nat_gateway_idle_timeout" {
 }
 
 variable "create_nat_gateway" {
-  type    = bool
-  default = false
+  type        = bool
+  default     = false
+  description = "Flag to control nat gateway creation."
+}
+
+variable "enable_route_table" {
+  type        = bool
+  default     = false
+  description = "Flag to control route table creation."
+}
+
+variable "routes" {
+  type        = list(map(string))
+  default     = []
+  description = "List of objects that represent the configuration of each route."
+  /*ROUTES = [{ name = "", address_prefix = "", next_hop_type = "", next_hop_in_ip_address = "" }]*/
+}
+
+variable "disable_bgp_route_propagation" {
+  type        = bool
+  default     = true
+  description = "Boolean flag which controls propagation of routes learned by BGP on that route table."
 }
