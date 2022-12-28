@@ -1,5 +1,6 @@
 #Module      : LABEL
 #Description : Terraform label module variables.
+
 variable "name" {
   type        = string
   default     = ""
@@ -8,7 +9,7 @@ variable "name" {
 
 variable "repository" {
   type        = string
-  default     = "https://github.com/clouddrove/terraform-azure-nsg"
+  default     = "https://github.com/clouddrove/terraform-azure-subnet.git"
   description = "Terraform current module repo"
 
   validation {
@@ -54,91 +55,93 @@ variable "managedby" {
   description = "ManagedBy, eg 'CloudDrove'."
 }
 
-variable "enabled" {
+variable "enable" {
   type        = bool
   default     = true
   description = "Flag to control the module creation"
 }
 
-variable "subnet_names" {
-  type        = list(any)
-  default     = []
-  description = "List of subnet_names for the subnet."
-}
-
-variable "address_prefixes" {
-  type        = list(any)
-  default     = []
-  description = "List of address prefixes for the subnet."
-}
-
 variable "resource_group_name" {
   type        = string
   default     = ""
-  description = "The name of the resource group in which to create the virtual network."
+  description = "The name of an existing resource group to be imported."
+}
+
+variable "location" {
+  type        = string
+  default     = ""
+  description = "The location/region where the virtual network is created. Changing this forces a new resource to be created."
+}
+
+variable "subnet_prefixes" {
+  type        = list(string)
+  default     = []
+  description = "The address prefix to use for the subnet."
+}
+
+variable "subnet_names" {
+  type        = list(string)
+  default     = []
+  description = "A list of public subnets inside the vNet."
+}
+
+variable "subnet_enforce_private_link_endpoint_network_policies" {
+  type        = map(bool)
+  default     = {}
+  description = "A map with key (string) `subnet name`, value (bool) `true` or `false` to indicate enable or disable network policies for the private link endpoint on the subnet. Default value is false."
+}
+
+variable "subnet_service_endpoints" {
+  type        = map(list(string))
+  default     = {}
+  description = "A map with key (string) `subnet name`, value (list(string)) to indicate enabled service endpoints on the subnet. Default value is []."
+}
+
+variable "subnet_enforce_private_link_service_network_policies" {
+  type        = bool
+  default     = true
+  description = "A map with key (string) `subnet name`, value (bool) `true` or `false` to indicate enable or disable network policies for the private link endpoint on the subnet. Default value is false."
+}
+
+variable "private_delegation" {
+  default = {}
+}
+
+variable "default_name_subnet" {
+  type    = bool
+  default = false
+}
+
+variable "specific_name_subnet" {
+  type    = bool
+  default = false
+}
+
+variable "specific_subnet_names" {
+  type        = string
+  default     = ""
+  description = "A list of subnets inside the vNet."
 }
 
 variable "virtual_network_name" {
   type        = string
   default     = ""
-  description = "The name of the virtual network."
+  description = "The name of the virtual network in which the subnet is created in"
 }
 
-variable "enforce_private_link_endpoint_network_policies" {
-  type        = bool
-  default     = false
-  description = " Enable or Disable network policies for the private link endpoint on the subnet. Default value is false."
+variable "public_ip_zones" {
+  description = "Public ip Zones to configure."
+  type        = list(string)
+  default     = null
 }
 
-variable "enforce_private_link_service_network_policies" {
-  type        = bool
-  default     = false
-  description = " Enable or Disable network policies for the private link service on the subnet. Default value is false."
+variable "nat_gateway_idle_timeout" {
+  description = "Idle timeout configuration in minutes for Nat Gateway"
+  type        = number
+  default     = 4
 }
 
-variable "service_endpoints" {
-  type        = list(any)
-  default     = []
-  description = "The list of Service endpoints to associate with the subnet."
-}
-
-variable "delegations" {
-  type        = any
-  default     = []
-  description = "Block of services that has to be delegated."
-}
-
-variable "create" {
-  type        = string
-  default     = "30m"
-  description = "Used when creating the Resource Group."
-}
-
-variable "update" {
-  type        = string
-  default     = "30m"
-  description = "Used when updating the Resource Group."
-}
-
-variable "read" {
-  type        = string
-  default     = "5m"
-  description = "Used when retrieving the Resource Group."
-}
-
-variable "delete" {
-  type        = string
-  default     = "30m"
-  description = "Used when deleting the Resource Group."
-}
-variable "enabled_nsg" {
-  type        = bool
-  default     = true
-  description = "Flag to enable to associcate subnet with nsg."
-}
-
-variable "network_security_group_id" {
-  type        = string
-  default     = ""
-  description = "The ID of the Network Security Group which should be associated with the Subnet."
+variable "create_nat_gateway" {
+  type    = bool
+  default = false
 }
