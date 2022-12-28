@@ -42,3 +42,14 @@ output "public_ip_id" {
   description = " The ID of this Public IP."
   value       = azurerm_public_ip.pip.*.id
 }
+
+
+output "route_table_id" {
+  description = "The Route Table ID."
+  value       = var.enable_route_table ? azurerm_route_table.rt.*.id : null
+}
+
+output "route_table_associated_subnets" {
+  description = "The collection of Subnets associated with this route table."
+  value       = var.enable_route_table ? azurerm_route_table.rt.*.subnets[0] : null
+}

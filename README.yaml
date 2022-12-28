@@ -52,6 +52,16 @@ usage: |-
       default_name_subnet = true
       subnet_names        = ["subnet1", "subnet2"]
       subnet_prefixes     = ["10.0.1.0/24", "10.0.2.0/24"]
+
+      # route_table
+      enable_route_table = false
+      routes = [
+        {
+          name           = "rt-test"
+          address_prefix = "0.0.0.0/0"
+          next_hop_type  = "Internet"
+        }
+      ]
     }
   ```
   ### Name_Specific Subnet
@@ -67,11 +77,21 @@ usage: |-
 
       #subnet
       specific_name_subnet  = true
-      specific_subnet_names = "GatewaySubnet"
+      specific_subnet_names = "SpecificSubnet"
       subnet_prefixes       = ["10.0.1.0/24"]
+
+      # route_table
+      enable_route_table = false
+      routes = [
+        {
+          name           = "rt-test"
+          address_prefix = "0.0.0.0/0"
+          next_hop_type  = "Internet"
+        }
+      ]
     }
   ```
-  ### Nat_Gateway_Subnet
+  ### Nat_Gateway Subnet
   ```hcl
     module "name_specific_subnet" {
       source               = "clouddrove/subnet/azure"
@@ -87,5 +107,15 @@ usage: |-
       create_nat_gateway  = true
       subnet_names        = ["subnet1", "subnet2"]
       subnet_prefixes     = ["10.0.1.0/24", "10.0.2.0/24"]
+
+      # route_table
+      enable_route_table = false
+      routes = [
+        {
+          name           = "rt-test"
+          address_prefix = "0.0.0.0/0"
+          next_hop_type  = "Internet"
+        }
+      ]
     }
   ```
