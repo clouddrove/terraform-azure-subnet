@@ -70,6 +70,16 @@ Here is an example of how you can use this module in your inventory structure:
     default_name_subnet = true
     subnet_names        = ["subnet1", "subnet2"]
     subnet_prefixes     = ["10.0.1.0/24", "10.0.2.0/24"]
+
+    # route_table
+    enable_route_table = false
+    routes = [
+      {
+        name           = "rt-test"
+        address_prefix = "0.0.0.0/0"
+        next_hop_type  = "Internet"
+      }
+    ]
   }
 ```
 ### Name_Specific Subnet
@@ -85,11 +95,21 @@ Here is an example of how you can use this module in your inventory structure:
 
     #subnet
     specific_name_subnet  = true
-    specific_subnet_names = "GatewaySubnet"
+    specific_subnet_names = "SpecificSubnet"
     subnet_prefixes       = ["10.0.1.0/24"]
+
+    # route_table
+    enable_route_table = false
+    routes = [
+      {
+        name           = "rt-test"
+        address_prefix = "0.0.0.0/0"
+        next_hop_type  = "Internet"
+      }
+    ]
   }
 ```
-### Nat_Gateway_Subnet
+### Nat_Gateway Subnet
 ```hcl
   module "name_specific_subnet" {
     source               = "clouddrove/subnet/azure"
@@ -105,6 +125,16 @@ Here is an example of how you can use this module in your inventory structure:
     create_nat_gateway  = true
     subnet_names        = ["subnet1", "subnet2"]
     subnet_prefixes     = ["10.0.1.0/24", "10.0.2.0/24"]
+
+    # route_table
+    enable_route_table = false
+    routes = [
+      {
+        name           = "rt-test"
+        address_prefix = "0.0.0.0/0"
+        next_hop_type  = "Internet"
+      }
+    ]
   }
 ```
 
@@ -118,10 +148,12 @@ Here is an example of how you can use this module in your inventory structure:
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | attributes | Additional attributes (e.g. `1`). | `list(any)` | `[]` | no |
-| create\_nat\_gateway | n/a | `bool` | `false` | no |
+| create\_nat\_gateway | Flag to control nat gateway creation. | `bool` | `false` | no |
 | default\_name\_subnet | n/a | `bool` | `false` | no |
 | delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | `string` | `"-"` | no |
+| disable\_bgp\_route\_propagation | Boolean flag which controls propagation of routes learned by BGP on that route table. | `bool` | `true` | no |
 | enable | Flag to control the module creation | `bool` | `true` | no |
+| enable\_route\_table | Flag to control route table creation. | `bool` | `false` | no |
 | environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
 | label\_order | Label order, e.g. `name`,`application`. | `list(any)` | `[]` | no |
 | location | The location/region where the virtual network is created. Changing this forces a new resource to be created. | `string` | `""` | no |
@@ -132,6 +164,7 @@ Here is an example of how you can use this module in your inventory structure:
 | public\_ip\_zones | Public ip Zones to configure. | `list(string)` | `null` | no |
 | repository | Terraform current module repo | `string` | `"https://github.com/clouddrove/terraform-azure-subnet.git"` | no |
 | resource\_group\_name | The name of an existing resource group to be imported. | `string` | `""` | no |
+| routes | List of objects that represent the configuration of each route. | `list(map(string))` | `[]` | no |
 | specific\_name\_subnet | n/a | `bool` | `false` | no |
 | specific\_subnet\_names | A list of subnets inside the vNet. | `string` | `""` | no |
 | subnet\_enforce\_private\_link\_endpoint\_network\_policies | A map with key (string) `subnet name`, value (bool) `true` or `false` to indicate enable or disable network policies for the private link endpoint on the subnet. Default value is false. | `map(bool)` | `{}` | no |
@@ -152,6 +185,8 @@ Here is an example of how you can use this module in your inventory structure:
 | nat\_gateway\_id | The ID of the NAT Gateway. |
 | public\_ip\_address | The IP address value that was allocated. |
 | public\_ip\_id | The ID of this Public IP. |
+| route\_table\_associated\_subnets | The collection of Subnets associated with this route table. |
+| route\_table\_id | The Route Table ID. |
 | specific\_subnet\_address\_prefixes | The address prefixes for the subnet. |
 | specific\_subnet\_id | The subnet ID. |
 | specific\_subnet\_name | The name of the subnet. |
