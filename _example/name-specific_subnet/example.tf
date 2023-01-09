@@ -49,13 +49,4 @@ module "name_specific_subnet" {
       next_hop_type  = "Internet"
     }
   ]
-
-  #  delegation = {
-  #    app-service-plan = [
-  #      {
-  #        name    = "Microsoft.Web/serverFarms"
-  #        actions = ["Microsoft.Network/virtualNetworks/subnets/action"]
-  #      }
-  #    ]
-  #  }
 }
