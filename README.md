@@ -150,6 +150,7 @@ Here is an example of how you can use this module in your inventory structure:
 | attributes | Additional attributes (e.g. `1`). | `list(any)` | `[]` | no |
 | create\_nat\_gateway | Flag to control nat gateway creation. | `bool` | `false` | no |
 | default\_name\_subnet | n/a | `bool` | `false` | no |
+| delegation | Configuration delegations on subnet<br>object({<br>  name = object({<br>    name = string,<br>    actions = list(string)<br>  })<br>}) | `map(list(any))` | `{}` | no |
 | delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | `string` | `"-"` | no |
 | disable\_bgp\_route\_propagation | Boolean flag which controls propagation of routes learned by BGP on that route table. | `bool` | `true` | no |
 | enable | Flag to control the module creation | `bool` | `true` | no |
@@ -160,7 +161,6 @@ Here is an example of how you can use this module in your inventory structure:
 | managedby | ManagedBy, eg 'CloudDrove'. | `string` | `"hello@clouddrove.com"` | no |
 | name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
 | nat\_gateway\_idle\_timeout | Idle timeout configuration in minutes for Nat Gateway | `number` | `4` | no |
-| private\_delegation | n/a | `map` | `{}` | no |
 | public\_ip\_zones | Public ip Zones to configure. | `list(string)` | `null` | no |
 | repository | Terraform current module repo | `string` | `"https://github.com/clouddrove/terraform-azure-subnet.git"` | no |
 | resource\_group\_name | The name of an existing resource group to be imported. | `string` | `""` | no |
