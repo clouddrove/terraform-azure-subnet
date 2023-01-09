@@ -27,12 +27,15 @@ resource "azurerm_subnet" "subnet" {
   private_link_service_network_policies_enabled = var.subnet_enforce_private_link_service_network_policies
 
   dynamic "delegation" {
-    for_each = var.private_delegation
+    for_each = var.delegation
     content {
-      name = lookup(each.value.private_delegation, "name", null)
-      service_delegation {
-        name    = lookup(each.value.private_delegation.service_delegation, "name", null)
-        actions = lookup(each.value.private_delegation.service_delegation, "actions", null)
+      name = delegation.key
+      dynamic "service_delegation" {
+        for_each = toset(delegation.value)
+        content {
+          name    = service_delegation.value.name
+          actions = service_delegation.value.actions
+        }
       }
     }
   }
@@ -49,12 +52,15 @@ resource "azurerm_subnet" "subnet2" {
   private_link_service_network_policies_enabled = var.subnet_enforce_private_link_service_network_policies
 
   dynamic "delegation" {
-    for_each = var.private_delegation
+    for_each = var.delegation
     content {
-      name = lookup(each.value.private_delegation, "name", null)
-      service_delegation {
-        name    = lookup(each.value.private_delegation.service_delegation, "name", null)
-        actions = lookup(each.value.private_delegation.service_delegation, "actions", null)
+      name = delegation.key
+      dynamic "service_delegation" {
+        for_each = toset(delegation.value)
+        content {
+          name    = service_delegation.value.name
+          actions = service_delegation.value.actions
+        }
       }
     }
   }

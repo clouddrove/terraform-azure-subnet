@@ -103,8 +103,18 @@ variable "subnet_enforce_private_link_service_network_policies" {
   description = "A map with key (string) `subnet name`, value (bool) `true` or `false` to indicate enable or disable network policies for the private link endpoint on the subnet. Default value is false."
 }
 
-variable "private_delegation" {
-  default = {}
+variable "delegation" {
+  description = <<EOD
+Configuration delegations on subnet
+object({
+  name = object({
+    name = string,
+    actions = list(string)
+  })
+})
+EOD
+  type        = map(list(any))
+  default     = {}
 }
 
 variable "default_name_subnet" {
