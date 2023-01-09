@@ -165,13 +165,13 @@ Here is an example of how you can use this module in your inventory structure:
 | repository | Terraform current module repo | `string` | `"https://github.com/clouddrove/terraform-azure-subnet.git"` | no |
 | resource\_group\_name | The name of an existing resource group to be imported. | `string` | `""` | no |
 | routes | List of objects that represent the configuration of each route. | `list(map(string))` | `[]` | no |
+| service\_endpoints | A map with key (string) `subnet name`, value (list(string)) to indicate enabled service endpoints on the subnet. Default value is []. | `list(string)` | `[]` | no |
 | specific\_name\_subnet | n/a | `bool` | `false` | no |
 | specific\_subnet\_names | A list of subnets inside the vNet. | `string` | `""` | no |
 | subnet\_enforce\_private\_link\_endpoint\_network\_policies | A map with key (string) `subnet name`, value (bool) `true` or `false` to indicate enable or disable network policies for the private link endpoint on the subnet. Default value is false. | `map(bool)` | `{}` | no |
 | subnet\_enforce\_private\_link\_service\_network\_policies | A map with key (string) `subnet name`, value (bool) `true` or `false` to indicate enable or disable network policies for the private link endpoint on the subnet. Default value is false. | `bool` | `true` | no |
 | subnet\_names | A list of public subnets inside the vNet. | `list(string)` | `[]` | no |
 | subnet\_prefixes | The address prefix to use for the subnet. | `list(string)` | `[]` | no |
-| subnet\_service\_endpoints | A map with key (string) `subnet name`, value (list(string)) to indicate enabled service endpoints on the subnet. Default value is []. | `map(list(string))` | `{}` | no |
 | tags | Additional tags (e.g. map(`BusinessUnit`,`XYZ`). | `map(any)` | `{}` | no |
 | virtual\_network\_name | The name of the virtual network in which the subnet is created in | `string` | `""` | no |
 
