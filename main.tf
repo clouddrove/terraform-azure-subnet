@@ -23,7 +23,7 @@ resource "azurerm_subnet" "subnet" {
   address_prefixes                              = [var.subnet_prefixes[count.index]]
   virtual_network_name                          = var.virtual_network_name
   private_endpoint_network_policies_enabled     = lookup(var.subnet_enforce_private_link_endpoint_network_policies, var.subnet_names[count.index], false)
-  service_endpoints                             = lookup(var.subnet_service_endpoints, var.subnet_names[count.index], [])
+  service_endpoints                             = var.service_endpoints
   private_link_service_network_policies_enabled = var.subnet_enforce_private_link_service_network_policies
 
   dynamic "delegation" {
@@ -48,7 +48,7 @@ resource "azurerm_subnet" "subnet2" {
   address_prefixes                              = [var.subnet_prefixes[count.index]]
   virtual_network_name                          = var.virtual_network_name
   private_endpoint_network_policies_enabled     = lookup(var.subnet_enforce_private_link_endpoint_network_policies, var.specific_subnet_names, false)
-  service_endpoints                             = lookup(var.subnet_service_endpoints, var.specific_subnet_names, [])
+  service_endpoints                             = var.service_endpoints
   private_link_service_network_policies_enabled = var.subnet_enforce_private_link_service_network_policies
 
   dynamic "delegation" {
