@@ -17,7 +17,7 @@ module "labels" {
 
 #Subnet
 resource "azurerm_subnet" "subnet" {
-  count                                         = var.enable && var.default_name_subnet == true ? length(var.subnet_names) : 0
+  count                                         = var.enable && var.specific_name_subnet == false ? length(var.subnet_names) : 0
   name                                          = "${var.name}-${var.subnet_names[count.index]}"
   resource_group_name                           = var.resource_group_name
   address_prefixes                              = [var.subnet_prefixes[count.index]]
@@ -97,9 +97,9 @@ resource "azurerm_nat_gateway_public_ip_association" "pip_assoc" {
 }
 
 resource "azurerm_subnet_nat_gateway_association" "subnet_assoc" {
-  count          = var.create_nat_gateway ? (var.default_name_subnet == true ? length(azurerm_subnet.subnet.*.id) : length(azurerm_subnet.subnet2.*.id)) : 0
+  count          = var.create_nat_gateway ? (var.specific_name_subnet == false ? length(azurerm_subnet.subnet.*.id) : length(azurerm_subnet.subnet2.*.id)) : 0
   nat_gateway_id = join("", azurerm_nat_gateway.natgw.*.id)
-  subnet_id      = var.default_name_subnet == true ? azurerm_subnet.subnet.*.id[count.index] : azurerm_subnet.subnet2.*.id[count.index]
+  subnet_id      = var.specific_name_subnet == false ? azurerm_subnet.subnet.*.id[count.index] : azurerm_subnet.subnet2.*.id[count.index]
 }
 
 #Route Table
@@ -122,7 +122,7 @@ resource "azurerm_route_table" "rt" {
 }
 
 resource "azurerm_subnet_route_table_association" "main" {
-  count          = var.enable && var.enable_route_table && var.default_name_subnet ? length(var.subnet_prefixes) : 0
+  count          = var.enable && var.enable_route_table && var.specific_name_subnet == false ? length(var.subnet_prefixes) : 0
   subnet_id      = element(azurerm_subnet.subnet.*.id, count.index)
   route_table_id = join("", azurerm_route_table.rt.*.id)
 }
