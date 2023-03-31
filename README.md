@@ -67,12 +67,10 @@ Here is an example of how you can use this module in your inventory structure:
     virtual_network_name = join("", module.vnet.vnet_name)
 
     #subnet
-    default_name_subnet = true
     subnet_names        = ["subnet1", "subnet2"]
     subnet_prefixes     = ["10.0.1.0/24", "10.0.2.0/24"]
 
     # route_table
-    enable_route_table = false
     routes = [
       {
         name           = "rt-test"
@@ -99,7 +97,6 @@ Here is an example of how you can use this module in your inventory structure:
     subnet_prefixes       = ["10.0.1.0/24"]
 
     # route_table
-    enable_route_table = false
     routes = [
       {
         name           = "rt-test"
@@ -121,13 +118,11 @@ Here is an example of how you can use this module in your inventory structure:
     virtual_network_name = join("", module.vnet.vnet_name)
 
     #subnet
-    default_name_subnet = true
     create_nat_gateway  = true
     subnet_names        = ["subnet1", "subnet2"]
     subnet_prefixes     = ["10.0.1.0/24", "10.0.2.0/24"]
 
     # route_table
-    enable_route_table = false
     routes = [
       {
         name           = "rt-test"
@@ -149,14 +144,13 @@ Here is an example of how you can use this module in your inventory structure:
 |------|-------------|------|---------|:--------:|
 | attributes | Additional attributes (e.g. `1`). | `list(any)` | `[]` | no |
 | create\_nat\_gateway | Flag to control nat gateway creation. | `bool` | `false` | no |
-| default\_name\_subnet | n/a | `bool` | `false` | no |
 | delegation | Configuration delegations on subnet<br>object({<br>  name = object({<br>    name = string,<br>    actions = list(string)<br>  })<br>}) | `map(list(any))` | `{}` | no |
 | delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | `string` | `"-"` | no |
 | disable\_bgp\_route\_propagation | Boolean flag which controls propagation of routes learned by BGP on that route table. | `bool` | `false` | no |
 | enable | Flag to control the module creation | `bool` | `true` | no |
-| enable\_route\_table | Flag to control route table creation. | `bool` | `false` | no |
+| enable\_route\_table | Flag to control route table creation. | `bool` | `true` | no |
 | environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
-| label\_order | Label order, e.g. `name`,`application`. | `list(any)` | `[]` | no |
+| label\_order | Label order, e.g. `name`,`application`. | `list(any)` | <pre>[<br>  "name",<br>  "environment"<br>]</pre> | no |
 | location | The location/region where the virtual network is created. Changing this forces a new resource to be created. | `string` | `""` | no |
 | managedby | ManagedBy, eg 'CloudDrove'. | `string` | `"hello@clouddrove.com"` | no |
 | name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
