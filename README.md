@@ -152,7 +152,7 @@ Here is an example of how you can use this module in your inventory structure:
 | default\_name\_subnet | n/a | `bool` | `false` | no |
 | delegation | Configuration delegations on subnet<br>object({<br>  name = object({<br>    name = string,<br>    actions = list(string)<br>  })<br>}) | `map(list(any))` | `{}` | no |
 | delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | `string` | `"-"` | no |
-| disable\_bgp\_route\_propagation | Boolean flag which controls propagation of routes learned by BGP on that route table. | `bool` | `true` | no |
+| disable\_bgp\_route\_propagation | Boolean flag which controls propagation of routes learned by BGP on that route table. | `bool` | `false` | no |
 | enable | Flag to control the module creation | `bool` | `true` | no |
 | enable\_route\_table | Flag to control route table creation. | `bool` | `false` | no |
 | environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
