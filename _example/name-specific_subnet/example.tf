@@ -4,7 +4,7 @@ provider "azurerm" {
 
 module "resource_group" {
   source  = "clouddrove/resource-group/azure"
-  version = "1.0.0"
+  version = "1.0.1"
 
   name        = "app"
   environment = "test"
@@ -22,7 +22,6 @@ module "vnet" {
   resource_group_name = module.resource_group.resource_group_name
   location            = module.resource_group.resource_group_location
   address_space       = "10.0.0.0/16"
-  enable_ddos_pp      = false
 }
 
 module "name_specific_subnet" {
@@ -30,7 +29,7 @@ module "name_specific_subnet" {
 
   name                 = "app"
   environment          = "test"
-  label_order          = ["name", "environment"]
+  
   resource_group_name  = module.resource_group.resource_group_name
   location             = module.resource_group.resource_group_location
   virtual_network_name = join("", module.vnet.vnet_name)
@@ -41,7 +40,6 @@ module "name_specific_subnet" {
   subnet_prefixes       = ["10.0.1.0/24"]
 
   # route_table
-  enable_route_table = false
   routes = [
     {
       name           = "rt-test"

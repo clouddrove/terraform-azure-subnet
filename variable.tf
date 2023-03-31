@@ -27,7 +27,7 @@ variable "environment" {
 
 variable "label_order" {
   type        = list(any)
-  default     = []
+  default     = ["name", "environment"]
   description = "Label order, e.g. `name`,`application`."
 }
 
@@ -117,11 +117,6 @@ EOD
   default     = {}
 }
 
-variable "default_name_subnet" {
-  type    = bool
-  default = false
-}
-
 variable "specific_name_subnet" {
   type    = bool
   default = false
@@ -159,7 +154,7 @@ variable "create_nat_gateway" {
 
 variable "enable_route_table" {
   type        = bool
-  default     = false
+  default     = true
   description = "Flag to control route table creation."
 }
 
