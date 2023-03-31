@@ -172,6 +172,6 @@ variable "routes" {
 
 variable "disable_bgp_route_propagation" {
   type        = bool
-  default     = true
+  default     = false
   description = "Boolean flag which controls propagation of routes learned by BGP on that route table."
 }
