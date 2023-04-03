@@ -27,9 +27,9 @@ module "vnet" {
 module "name_specific_subnet" {
   source = "../.."
 
-  name                 = "app"
-  environment          = "test"
-  
+  name        = "app"
+  environment = "test"
+
   resource_group_name  = module.resource_group.resource_group_name
   location             = module.resource_group.resource_group_location
   virtual_network_name = join("", module.vnet.vnet_name)
