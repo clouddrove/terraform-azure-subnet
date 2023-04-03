@@ -27,8 +27,8 @@ module "vnet" {
 module "subnet" {
   source = "../.."
 
-  name                 = "app"
-  environment          = "test"
+  name        = "app"
+  environment = "test"
 
   resource_group_name  = module.resource_group.resource_group_name
   location             = module.resource_group.resource_group_location
@@ -40,6 +40,7 @@ module "subnet" {
   subnet_prefixes    = ["10.0.1.0/24", "10.0.2.0/24"]
 
   # route_table
+  route_table_name = "nat_gateway"
   routes = [
     {
       name           = "rt-test"

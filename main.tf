@@ -105,7 +105,7 @@ resource "azurerm_subnet_nat_gateway_association" "subnet_assoc" {
 #Route Table
 resource "azurerm_route_table" "rt" {
   count               = var.enable && var.enable_route_table ? 1 : 0
-  name                = format("%s-route-table", module.labels.id)
+  name                = format("%s-%s-route-table", module.labels.id, var.route_table_name)
   location            = var.location
   resource_group_name = var.resource_group_name
   dynamic "route" {
