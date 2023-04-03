@@ -165,6 +165,12 @@ variable "routes" {
   /*ROUTES = [{ name = "", address_prefix = "", next_hop_type = "", next_hop_in_ip_address = "" }]*/
 }
 
+variable "route_table_name" {
+  type        = string
+  default     = ""
+  description = "The name of the route table."
+}
+
 variable "disable_bgp_route_propagation" {
   type        = bool
   default     = false
