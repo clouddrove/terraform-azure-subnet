@@ -49,3 +49,29 @@ module "subnet" {
     }
   ]
 }
+
+module "subnet_2" {
+  source = "../.."
+
+  name        = "app"
+  environment = "test"
+
+  resource_group_name  = module.resource_group.resource_group_name
+  location             = module.resource_group.resource_group_location
+  virtual_network_name = join("", module.vnet.vnet_name)
+
+  #subnet
+  subnet_names    = ["sub3", "sub4"]
+  subnet_prefixes = ["10.0.3.0/24", "10.0.4.0/24"]
+
+  # route_table
+  enable_route_table = true
+  route_table_name   = "test_rt"
+  routes = [
+    {
+      name           = "rt-test"
+      address_prefix = "0.0.0.0/0"
+      next_hop_type  = "Internet"
+    }
+  ]
+}

@@ -167,7 +167,7 @@ variable "routes" {
 
 variable "route_table_name" {
   type        = string
-  default     = ""
+  default     = null
   description = "The name of the route table."
 }
 
