@@ -158,7 +158,7 @@ Here is an example of how you can use this module in your inventory structure:
 | public\_ip\_zones | Public ip Zones to configure. | `list(string)` | `null` | no |
 | repository | Terraform current module repo | `string` | `"https://github.com/clouddrove/terraform-azure-subnet.git"` | no |
 | resource\_group\_name | The name of an existing resource group to be imported. | `string` | `""` | no |
-| route\_table\_name | The name of the route table. | `string` | `""` | no |
+| route\_table\_name | The name of the route table. | `string` | `null` | no |
 | routes | List of objects that represent the configuration of each route. | `list(map(string))` | `[]` | no |
 | service\_endpoints | A map with key (string) `subnet name`, value (list(string)) to indicate enabled service endpoints on the subnet. Default value is []. | `list(string)` | `[]` | no |
 | specific\_name\_subnet | n/a | `bool` | `false` | no |
