@@ -40,7 +40,8 @@ module "name_specific_subnet" {
   subnet_prefixes       = ["10.0.1.0/24"]
 
   # route_table
-  route_table_name = "name_specific_subnet"
+  enable_route_table = true
+  route_table_name   = "name_specific_subnet"
   routes = [
     {
       name           = "rt-test"
