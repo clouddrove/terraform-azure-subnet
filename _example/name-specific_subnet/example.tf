@@ -4,11 +4,11 @@ provider "azurerm" {
 
 module "resource_group" {
   source  = "clouddrove/resource-group/azure"
-  version = "1.0.1"
+  version = "1.0.2"
 
   name        = "app"
   environment = "test"
-  label_order = ["environment", "name", ]
+  label_order = ["name", "environment", ]
   location    = "North Europe"
 }
 
@@ -18,7 +18,6 @@ module "vnet" {
 
   name                = "app"
   environment         = "test"
-  label_order         = ["name", "environment"]
   resource_group_name = module.resource_group.resource_group_name
   location            = module.resource_group.resource_group_location
   address_space       = "10.0.0.0/16"
