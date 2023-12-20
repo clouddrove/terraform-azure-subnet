@@ -13,7 +13,7 @@ jobs:
   complete-example:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.0.8
     with:
-      working_directory: './_example/name_specific_subnet/'
+      working_directory: './_example/name-specific-subnet/'
 
   vnet_with_existing_ddos_id-example:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.0.8

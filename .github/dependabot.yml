@@ -43,7 +43,7 @@ updates:
     open-pull-requests-limit: 3
 
   - package-ecosystem: "terraform" # See documentation for possible values
-    directory: "/_example/name_specific_subnet" # Location of package manifests
+    directory: "/_example/name-specific-subnet" # Location of package manifests
     schedule:
       interval: "weekly"
     # Add assignees
