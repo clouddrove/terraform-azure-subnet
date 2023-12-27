@@ -32,4 +32,3 @@ output "route_table_associated_subnets" {
   value       = module.name_specific_subnet[*].route_table_associated_subnets[0]
   description = "The collection of Subnets associated with this route table."
 }
-

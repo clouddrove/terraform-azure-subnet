@@ -39,7 +39,7 @@ module "name_specific_subnet" {
 
   #subnet
   specific_name_subnet  = true
-  specific_subnet_names = "SpecificSubnet"
+  specific_subnet_names = ["SpecificSubnet"]
   subnet_prefixes       = ["10.0.1.0/24"]
 
   # route_table

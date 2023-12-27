@@ -1,6 +1,6 @@
 variable "name" {
   type        = string
-  default     = ""
+  default     = null
   description = "Name  (e.g. `app` or `cluster`)."
 }
 
@@ -18,7 +18,7 @@ variable "repository" {
 
 variable "environment" {
   type        = string
-  default     = ""
+  default     = null
   description = "Environment (e.g. `prod`, `dev`, `staging`)."
 }
 
@@ -42,13 +42,13 @@ variable "enable" {
 
 variable "resource_group_name" {
   type        = string
-  default     = ""
+  default     = null
   description = "The name of an existing resource group to be imported."
 }
 
 variable "location" {
   type        = string
-  default     = ""
+  default     = null
   description = "The location/region where the virtual network is created. Changing this forces a new resource to be created."
 }
 
@@ -65,8 +65,8 @@ variable "subnet_names" {
 }
 
 variable "subnet_enforce_private_link_endpoint_network_policies" {
-  type        = map(bool)
-  default     = {}
+  type        = bool
+  default     = false
   description = "A map with key (string) `subnet name`, value (bool) `true` or `false` to indicate enable or disable network policies for the private link endpoint on the subnet. Default value is false."
 }
 
@@ -103,14 +103,14 @@ variable "specific_name_subnet" {
 }
 
 variable "specific_subnet_names" {
-  type        = string
-  default     = ""
+  type        = list(string)
+  default     = [""]
   description = "A list of subnets inside the vNet."
 }
 
 variable "virtual_network_name" {
   type        = string
-  default     = ""
+  default     = null
   description = "The name of the virtual network in which the subnet is created in"
 }
 
