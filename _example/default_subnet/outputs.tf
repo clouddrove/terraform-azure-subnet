@@ -14,7 +14,7 @@ output "resource_group_name" {
 }
 
 output "virtual_network_name" {
-  value       = join("", module.vnet.vnet_name)
+  value       = module.vnet.vnet_name
   description = "The name of the virtual network in which the subnet is created in."
 }
 
