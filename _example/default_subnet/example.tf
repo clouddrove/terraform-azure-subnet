@@ -35,7 +35,7 @@ module "subnet" {
   label_order          = local.label_order
   resource_group_name  = module.resource_group.resource_group_name
   location             = module.resource_group.resource_group_location
-  virtual_network_name = join("", module.vnet.vnet_name)
+  virtual_network_name = module.vnet.vnet_name[0]
 
   #subnet
   subnet_names    = ["subnet1", "subnet2"]
@@ -60,7 +60,7 @@ module "subnet_2" {
   label_order          = local.label_order
   resource_group_name  = module.resource_group.resource_group_name
   location             = module.resource_group.resource_group_location
-  virtual_network_name = join("", module.vnet.vnet_name)
+  virtual_network_name = module.vnet.vnet_name[0]
 
   #subnet
   subnet_names    = ["sub3", "sub4"]
