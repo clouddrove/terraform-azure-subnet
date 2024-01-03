@@ -6,16 +6,21 @@ on:
   workflow_dispatch:
 jobs:
   basic-example:
-    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.0.8
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.0.9
     with:
-      working_directory: './_example/default_subnet/'
+      working_directory: './_example/basic/'
 
   complete-example:
-    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.0.8
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.0.9
+    with:
+      working_directory: './_example/complete/'
+
+  name-specific_subnet:
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.0.9
     with:
       working_directory: './_example/name-specific_subnet/'
 
-  vnet_with_existing_ddos_id-example:
-    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.0.8
+  nat-gateway_subnet:
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.0.9
     with:
       working_directory: './_example/nat-gateway_subnet/'

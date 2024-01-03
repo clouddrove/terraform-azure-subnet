@@ -19,17 +19,18 @@ module "resource_group" {
 
 module "vnet" {
   source              = "clouddrove/vnet/azure"
-  version             = "1.0.3"
+  version             = "1.0.4"
   name                = local.name
   environment         = local.environment
   label_order         = local.label_order
   resource_group_name = module.resource_group.resource_group_name
   location            = module.resource_group.resource_group_location
-  address_space       = "10.0.0.0/16"
+  address_spaces       = ["10.0.0.0/16"]
 }
 
 module "subnet" {
   source               = "../.."
+  enable = false
   name                 = local.name
   environment          = local.environment
   label_order          = local.label_order
@@ -43,7 +44,7 @@ module "subnet" {
 
   # route_table
   enable_route_table = true
-  route_table_name   = "default_subnet"
+  route_table_name   = "pub"
   routes = [
     {
       name           = "rt-test"
@@ -68,7 +69,7 @@ module "subnet_2" {
 
   # route_table
   enable_route_table = true
-  route_table_name   = "test_rt"
+  route_table_name   = "pvt"
   routes = [
     {
       name           = "rt-test"

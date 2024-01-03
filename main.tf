@@ -1,6 +1,16 @@
 ## Managed By : CloudDrove
 ## Copyright @ CloudDrove. All Right Reserved.
 
+##-----------------------------------------------------------------------------
+## Locals declaration
+##-----------------------------------------------------------------------------
+locals {
+  subnet = var.specific_name_subnet == false ? length(var.subnet_names) : length(var.specific_subnet_names)
+}
+
+##-----------------------------------------------------------------------------
+## Labels module callled that will be used for naming and tags.
+##-----------------------------------------------------------------------------
 module "labels" {
   source      = "clouddrove/labels/azure"
   version     = "1.0.0"
@@ -11,9 +21,11 @@ module "labels" {
   repository  = var.repository
 }
 
-#Subnet
+##-----------------------------------------------------------------------------
+## Below resource will deploy subnet in your azure environment.
+##-----------------------------------------------------------------------------
 resource "azurerm_subnet" "subnet" {
-  count                                         = var.enable && var.specific_name_subnet == false ? length(var.subnet_names) : length(var.specific_subnet_names)
+  count                                         = var.enable ? local.subnet : 0
   name                                          = var.specific_name_subnet == false ? "${var.name}-${element(var.subnet_names, count.index)}" : var.specific_subnet_names[0]
   resource_group_name                           = var.resource_group_name
   address_prefixes                              = [var.subnet_prefixes[count.index]]
@@ -38,7 +50,9 @@ resource "azurerm_subnet" "subnet" {
   }
 }
 
-##Nat Gateway
+##-----------------------------------------------------------------------------
+## Below resource will deploy Nat Gateway in your azure environment.
+##-----------------------------------------------------------------------------
 resource "azurerm_public_ip" "pip" {
   count               = var.enable && var.create_nat_gateway ? 1 : 0
   name                = format("%s-nat-gateway-ip", module.labels.id)
@@ -67,12 +81,14 @@ resource "azurerm_nat_gateway_public_ip_association" "pip_assoc" {
 }
 
 resource "azurerm_subnet_nat_gateway_association" "subnet_assoc" {
-  count          = var.enable && var.create_nat_gateway ? var.specific_name_subnet == false ? length(var.subnet_names) : length(var.specific_subnet_names) : 0
+  count          = var.enable && var.create_nat_gateway ? local.subnet : 0
   nat_gateway_id = join("", azurerm_nat_gateway.natgw[*].id)
   subnet_id      = element(azurerm_subnet.subnet[*].id, count.index)
 }
 
-#Route Table
+##-------------------------------------------------------------------------------------------
+## Below resource will deploy Route Table in your azure environment and associate with subnet
+##-------------------------------------------------------------------------------------------
 resource "azurerm_route_table" "rt" {
   count                         = var.enable && var.enable_route_table ? 1 : 0
   name                          = var.route_table_name == null ? format("%s-route-table", module.labels.id) : format("%s-%s-route-table", module.labels.id, var.route_table_name)
@@ -93,7 +109,7 @@ resource "azurerm_route_table" "rt" {
 }
 
 resource "azurerm_subnet_route_table_association" "main" {
-  count          = var.enable && var.specific_name_subnet == false ? length(var.subnet_names) : length(var.specific_subnet_names)
+  count          = var.enable ? local.subnet : 0
   subnet_id      = element(azurerm_subnet.subnet[*].id, count.index)
   route_table_id = azurerm_route_table.rt[0].id
 }
