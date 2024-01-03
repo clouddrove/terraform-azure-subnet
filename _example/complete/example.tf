@@ -25,12 +25,12 @@ module "vnet" {
   label_order         = local.label_order
   resource_group_name = module.resource_group.resource_group_name
   location            = module.resource_group.resource_group_location
-  address_spaces       = ["10.0.0.0/16"]
+  address_spaces      = ["10.0.0.0/16"]
 }
 
 module "subnet" {
   source               = "../.."
-  enable = false
+  enable               = false
   name                 = local.name
   environment          = local.environment
   label_order          = local.label_order
