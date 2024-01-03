@@ -18,9 +18,12 @@ github_repo: clouddrove/terraform-azure-subnet
 
 # Badges to display
 badges:
-  - name: "Terraform"
-    image: "https://img.shields.io/badge/Terraform-v1.0.0-green"
-    url: "https://www.terraform.io"
+  - name: "Latest Release"
+    image: "https://img.shields.io/github/release/clouddrove/terraform-azure-subnet.svg"
+    url: "https://github.com/clouddrove/terraform-azure-subnet/releases/latest"
+  - name: "tfsec"
+    image: "https://github.com/clouddrove/terraform-azure-subnet/actions/workflows/tfsec.yml/badge.svg"
+    url: "https://github.com/clouddrove/terraform-azure-subnet/actions/workflows/tfsec.yml"
   - name: "Licence"
     image: "https://img.shields.io/badge/License-APACHE-blue.svg"
     url: "LICENSE.md"
@@ -41,18 +44,20 @@ usage: |-
   ```hcl
     module "subnet" {
       source               = "clouddrove/subnet/azure"
-      name                 = "app"
-      environment          = "test"
-      label_order          = ["name", "environment"]
+      name                 = local.name
+      environment          = local.environment
+      label_order          = local.label_order
       resource_group_name  = module.resource_group.resource_group_name
       location             = module.resource_group.resource_group_location
       virtual_network_name = join("", module.vnet.vnet_name)
 
       #subnet
-      subnet_names        = ["subnet1", "subnet2"]
-      subnet_prefixes     = ["10.0.1.0/24", "10.0.2.0/24"]
+      subnet_names    = ["subnet1", "subnet2"]
+      subnet_prefixes = ["10.0.1.0/24", "10.0.2.0/24"]
 
       # route_table
+      enable_route_table = true
+      route_table_name   = "default_subnet"
       routes = [
         {
           name           = "rt-test"
@@ -66,9 +71,9 @@ usage: |-
   ```hcl
     module "name_specific_subnet" {
       source               = "clouddrove/subnet/azure"
-      name                 = "app"
-      environment          = "test"
-      label_order          = ["name", "environment"]
+      name                 = local.name
+      environment          = local.environment
+      label_order          = local.label_order
       resource_group_name  = module.resource_group.resource_group_name
       location             = module.resource_group.resource_group_location
       virtual_network_name = join("", module.vnet.vnet_name)
@@ -79,6 +84,8 @@ usage: |-
       subnet_prefixes       = ["10.0.1.0/24"]
 
       # route_table
+      enable_route_table = true
+      route_table_name   = "name_specific_subnet"
       routes = [
         {
           name           = "rt-test"
@@ -92,19 +99,21 @@ usage: |-
   ```hcl
     module "name_specific_subnet" {
       source               = "clouddrove/subnet/azure"
-      name                 = "app"
-      environment          = "test"
-      label_order          = ["name", "environment"]
+      name                 = local.name
+      environment          = local.environment
+      label_order          = local.label_order
       resource_group_name  = module.resource_group.resource_group_name
       location             = module.resource_group.resource_group_location
       virtual_network_name = join("", module.vnet.vnet_name)
 
       #subnet
-      create_nat_gateway  = true
-      subnet_names        = ["subnet1", "subnet2"]
-      subnet_prefixes     = ["10.0.1.0/24", "10.0.2.0/24"]
+      create_nat_gateway = true
+      subnet_names       = ["subnet1", "subnet2"]
+      subnet_prefixes    = ["10.0.1.0/24", "10.0.2.0/24"]
 
       # route_table
+      enable_route_table = true
+      route_table_name   = "nat_gateway"
       routes = [
         {
           name           = "rt-test"
