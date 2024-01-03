@@ -16,9 +16,9 @@ module "subnet" {
   name                 = local.name
   environment          = local.environment
   label_order          = local.label_order
-  resource_group_name  = ["/subscription/***************"]
-  location             = ["/subscription/***************"]
-  virtual_network_name = ["/subscription/***************"]
+  resource_group_name  = "/subscription/***************"
+  location             = "/subscription/***************"
+  virtual_network_name = "/subscription/***************"
 
   #subnet
   subnet_names    = ["subnet1", "subnet2"]
