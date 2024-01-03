@@ -109,7 +109,7 @@ resource "azurerm_route_table" "rt" {
 }
 
 resource "azurerm_subnet_route_table_association" "main" {
-  count          = var.enable ? local.subnet : 0
+  count          = var.enable && var.enable_route_table ? local.subnet : 0
   subnet_id      = element(azurerm_subnet.subnet[*].id, count.index)
   route_table_id = azurerm_route_table.rt[0].id
 }
