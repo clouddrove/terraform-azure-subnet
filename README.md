@@ -167,6 +167,7 @@ Here is an example of how you can use this module in your inventory structure:
 | enable | Flag to control the module creation | `bool` | `true` | no |
 | enable\_route\_table | Flag to control route table creation. | `bool` | `true` | no |
 | environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `null` | no |
+| extra\_tags | Variable to pass extra tags. | `map(string)` | `null` | no |
 | label\_order | Label order, e.g. `name`,`application`. | `list(any)` | <pre>[<br>  "name",<br>  "environment"<br>]</pre> | no |
 | location | The location/region where the virtual network is created. Changing this forces a new resource to be created. | `string` | `null` | no |
 | managedby | ManagedBy, eg 'CloudDrove'. | `string` | `"hello@clouddrove.com"` | no |
