@@ -34,6 +34,12 @@ variable "managedby" {
   description = "ManagedBy, eg 'CloudDrove'."
 }
 
+variable "extra_tags" {
+  type        = map(string)
+  default     = null
+  description = "Variable to pass extra tags."
+}
+
 variable "enable" {
   type        = bool
   default     = true
@@ -179,3 +185,5 @@ variable "sku_name" {
   default     = "Standard"
   description = "The SKU which should be used. At this time the only supported value is Standard. Defaults to Standard."
 }
+
+
