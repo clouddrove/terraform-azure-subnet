@@ -44,11 +44,11 @@ output "public_ip_id" {
 }
 
 output "route_table_id" {
-  value       = try(var.enable && var.enable_route_table ? azurerm_route_table.rt[*].id : null, null)
+  value       = var.enable && var.enable_route_table ? azurerm_route_table.rt[*].id : null
   description = "The Route Table ID."
 }
 
 output "route_table_associated_subnets" {
-  value       = try(var.enable && var.enable_route_table ? azurerm_route_table.rt[*].subnets : null, null)
+  value       = var.enable && var.enable_route_table ? azurerm_route_table.rt[*].subnets : null
   description = "The collection of Subnets associated with this route table."
 }
