@@ -44,7 +44,7 @@ output "public_ip_id" {
 }
 
 output "route_table_id" {
-  value       = var.enable && var.enable_route_table ? azurerm_route_table.rt[*].id : null
+  value       = var.enable && var.enable_route_table ? azurerm_route_table.rt[0].id : null
   description = "The Route Table ID."
 }
 
