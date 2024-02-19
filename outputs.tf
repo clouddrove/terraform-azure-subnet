@@ -29,17 +29,17 @@ output "default_subnet_address_prefixes" {
 }
 
 output "nat_gateway_id" {
-  value       = try(azurerm_nat_gateway.natgw[*].id, null)
+  value       = try(azurerm_nat_gateway.natgw[0].id, null)
   description = "The ID of the NAT Gateway."
 }
 
 output "public_ip_address" {
-  value       = try(azurerm_public_ip.pip[*].ip_address, null)
+  value       = try(azurerm_public_ip.pip[0].ip_address, null)
   description = "The IP address value that was allocated."
 }
 
 output "public_ip_id" {
-  value       = try(azurerm_public_ip.pip[*].id, null)
+  value       = try(azurerm_public_ip.pip[0].id, null)
   description = " The ID of this Public IP."
 }
 
