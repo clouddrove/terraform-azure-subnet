@@ -30,7 +30,6 @@ module "vnet" {
 
 module "subnet" {
   source               = "../.."
-  enable               = false
   name                 = local.name
   environment          = local.environment
   label_order          = local.label_order
