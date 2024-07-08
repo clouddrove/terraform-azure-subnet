@@ -71,9 +71,9 @@ variable "subnet_names" {
 }
 
 variable "subnet_enforce_private_link_endpoint_network_policies" {
-  type        = bool
-  default     = false
-  description = "A map with key (string) `subnet name`, value (bool) `true` or `false` to indicate enable or disable network policies for the private link endpoint on the subnet. Default value is false."
+  type        = string
+  default     = "Disabled"
+  description = "Possible values are Disabled, Enabled, NetworkSecurityGroupEnabled and RouteTableEnabled. Defaults to Disabled.."
 }
 
 variable "service_endpoints" {
