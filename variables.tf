@@ -156,9 +156,9 @@ variable "route_table_name" {
   description = "The name of the route table."
 }
 
-variable "disable_bgp_route_propagation" {
+variable "bgp_route_propagation_enabled" {
   type        = bool
-  default     = false
+  default     = true
   description = "Boolean flag which controls propagation of routes learned by BGP on that route table."
 }
 
