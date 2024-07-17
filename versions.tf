@@ -1,6 +1,6 @@
 # Terraform version
 terraform {
-  required_version = ">= 1.9.1"
+  required_version = ">= 1.7.8"
 }
 
 terraform {
