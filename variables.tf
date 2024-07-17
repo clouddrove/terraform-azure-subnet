@@ -70,7 +70,7 @@ variable "subnet_names" {
   description = "A list of public subnets inside the vNet."
 }
 
-variable "subnet_enforce_private_link_endpoint_network_policies" {
+variable "private_endpoint_network_policies" {
   type        = string
   default     = "Disabled"
   description = "Possible values are Disabled, Enabled, NetworkSecurityGroupEnabled and RouteTableEnabled. Defaults to Disabled.."
