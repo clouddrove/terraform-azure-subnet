@@ -70,10 +70,10 @@ variable "subnet_names" {
   description = "A list of public subnets inside the vNet."
 }
 
-variable "subnet_enforce_private_link_endpoint_network_policies" {
-  type        = bool
-  default     = false
-  description = "A map with key (string) `subnet name`, value (bool) `true` or `false` to indicate enable or disable network policies for the private link endpoint on the subnet. Default value is false."
+variable "private_endpoint_network_policies" {
+  type        = string
+  default     = "Disabled"
+  description = "Possible values are Disabled, Enabled, NetworkSecurityGroupEnabled and RouteTableEnabled. Defaults to Disabled.."
 }
 
 variable "service_endpoints" {
@@ -156,9 +156,9 @@ variable "route_table_name" {
   description = "The name of the route table."
 }
 
-variable "disable_bgp_route_propagation" {
+variable "bgp_route_propagation_enabled" {
   type        = bool
-  default     = false
+  default     = true
   description = "Boolean flag which controls propagation of routes learned by BGP on that route table."
 }
 
