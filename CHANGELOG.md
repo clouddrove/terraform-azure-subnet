@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2024-07-19
+### :sparkles: New Features
+- [`0c6c3f0`](https://github.com/clouddrove/terraform-azure-subnet/commit/0c6c3f037ee5da1bda0625d40966f97e4af2b5d0) - Added support for custom tags *(PR [#31](https://github.com/clouddrove/terraform-azure-subnet/pull/31) by [@Rupalgw](https://github.com/Rupalgw))*
+
+### :bug: Bug Fixes
+- [`6308291`](https://github.com/clouddrove/terraform-azure-subnet/commit/6308291b12f424aee501323198afa9d20dc9fee0) - update automerge and workflows version *(commit by [@mamrajyadav](https://github.com/mamrajyadav))*
+- [`e2def4e`](https://github.com/clouddrove/terraform-azure-subnet/commit/e2def4e06852270ede4ea52733743c6bd80fab3b) - Example  *(PR [#34](https://github.com/clouddrove/terraform-azure-subnet/pull/34) by [@Rupalgw](https://github.com/Rupalgw))*
+- [`edb92fd`](https://github.com/clouddrove/terraform-azure-subnet/commit/edb92fd8e73bbc79e5a4ff98c066f25c6d3d2600) - Updated attribute 'private_endpoint_network_policies' *(PR [#39](https://github.com/clouddrove/terraform-azure-subnet/pull/39) by [@ravimalvia10](https://github.com/ravimalvia10))*
+
+### :construction_worker: Build System
+- [`b1db8fe`](https://github.com/clouddrove/terraform-azure-subnet/commit/b1db8febc5cb8733b1995892e9651295e90aeead) - **deps**: bump clouddrove/github-shared-workflows *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`7d26a26`](https://github.com/clouddrove/terraform-azure-subnet/commit/7d26a26e565216f17f1f70f6c7369d7501ec6f64) - **deps**: bump pre-commit/action from 3.0.0 to 3.0.1 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`b0ae0d7`](https://github.com/clouddrove/terraform-azure-subnet/commit/b0ae0d74cd5f11b488e7916202cd8c16fce9ac15) - **deps**: bump clouddrove/github-shared-workflows from 1.2.1 to 1.2.2 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`83e0fe2`](https://github.com/clouddrove/terraform-azure-subnet/commit/83e0fe286283ff7c1578df01c14ee395972d8eeb) - **deps**: bump clouddrove/github-shared-workflows from 1.2.2 to 1.2.4 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`4e2e5d0`](https://github.com/clouddrove/terraform-azure-subnet/commit/4e2e5d0e1ba22a08e1f1c7b66477053e234f7b89) - **deps**: bump clouddrove/github-shared-workflows from 1.2.4 to 1.2.5 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`3a4c674`](https://github.com/clouddrove/terraform-azure-subnet/commit/3a4c674422e3162917cdff101ee6f85a50367e0e) - **deps**: bump clouddrove/github-shared-workflows from 1.2.5 to 1.2.7 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+
+### :memo: Documentation Changes
+- [`db0964e`](https://github.com/clouddrove/terraform-azure-subnet/commit/db0964e3732aec417b1cbab1c3f6032e174ab544) - update CHANGELOG.md for 1.1.0 *(commit by [@clouddrove-ci](https://github.com/clouddrove-ci))*
+
+
 ## [1.1.0] - 2024-01-05
 ### :memo: Documentation Changes
 - [`c02a8ce`](https://github.com/clouddrove/terraform-azure-subnet/commit/c02a8cee93226a4de7311d2683da42fc88608c7e) - update CHANGELOG.md for 1.0.3 *(commit by [@clouddrove-ci](https://github.com/clouddrove-ci))*
@@ -49,3 +70,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [1.0.3]: https://github.com/clouddrove/terraform-azure-subnet/compare/1.0.2...1.0.3
 [1.1.0]: https://github.com/clouddrove/terraform-azure-subnet/compare/1.0.3...1.1.0
+[1.2.0]: https://github.com/clouddrove/terraform-azure-subnet/compare/1.1.0...1.2.0
