@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1] - 2024-07-26
+### :bug: Bug Fixes
+- [`260cef1`](https://github.com/clouddrove/terraform-azure-subnet/commit/260cef1ef74e191ed01baa057db9257f122f0652) - Remove try function from outputs *(commit by [@13archit](https://github.com/13archit))*
+
+
 ## [1.2.0] - 2024-07-19
 ### :sparkles: New Features
 - [`0c6c3f0`](https://github.com/clouddrove/terraform-azure-subnet/commit/0c6c3f037ee5da1bda0625d40966f97e4af2b5d0) - Added support for custom tags *(PR [#31](https://github.com/clouddrove/terraform-azure-subnet/pull/31) by [@Rupalgw](https://github.com/Rupalgw))*
@@ -71,3 +76,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.0.3]: https://github.com/clouddrove/terraform-azure-subnet/compare/1.0.2...1.0.3
 [1.1.0]: https://github.com/clouddrove/terraform-azure-subnet/compare/1.0.3...1.1.0
 [1.2.0]: https://github.com/clouddrove/terraform-azure-subnet/compare/1.1.0...1.2.0
+[1.2.1]: https://github.com/clouddrove/terraform-azure-subnet/compare/1.2.0...1.2.1
