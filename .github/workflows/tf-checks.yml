@@ -8,19 +8,19 @@ jobs:
   basic-example:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.2.7
     with:
-      working_directory: './_example/basic/'
+      working_directory: './examples/basic/'
 
   complete-example:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.2.7
     with:
-      working_directory: './_example/complete/'
+      working_directory: './examples/complete/'
 
   name-specific_subnet:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.2.7
     with:
-      working_directory: './_example/name-specific_subnet/'
+      working_directory: './examples/name-specific_subnet/'
 
   nat-gateway_subnet:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.2.7
     with:
-      working_directory: './_example/nat-gateway_subnet/'
+      working_directory: './examples/nat-gateway_subnet/'
