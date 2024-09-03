@@ -30,7 +30,7 @@ updates:
     open-pull-requests-limit: 3
 
   - package-ecosystem: "terraform" # See documentation for possible values
-    directory: "/_example/basic" # Location of package manifests
+    directory: "/examples/basic" # Location of package manifests
     schedule:
       interval: "weekly"
     # Add assignees
@@ -43,7 +43,7 @@ updates:
     open-pull-requests-limit: 3
 
   - package-ecosystem: "terraform" # See documentation for possible values
-    directory: "/_example/complete" # Location of package manifests
+    directory: "/examples/complete" # Location of package manifests
     schedule:
       interval: "weekly"
     # Add assignees
@@ -56,7 +56,7 @@ updates:
     open-pull-requests-limit: 3
 
   - package-ecosystem: "terraform" # See documentation for possible values
-    directory: "/_example/name-specific_subnet" # Location of package manifests
+    directory: "/examples/name-specific_subnet" # Location of package manifests
     schedule:
       interval: "weekly"
     # Add assignees
@@ -69,7 +69,7 @@ updates:
     open-pull-requests-limit: 3
 
   - package-ecosystem: "terraform" # See documentation for possible values
-    directory: "/_example/nat-gateway_subnet" # Location of package manifests
+    directory: "/examples/nat-gateway_subnet" # Location of package manifests
     schedule:
       interval: "weekly"
     # Add assignees
