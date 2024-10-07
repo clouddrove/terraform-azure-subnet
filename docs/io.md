@@ -47,4 +47,3 @@
 | specific\_subnet\_address\_prefixes | The address prefixes for the subnet. |
 | specific\_subnet\_id | The name of the subnet. |
 | specific\_subnet\_name | The name of the subnet. |
-
