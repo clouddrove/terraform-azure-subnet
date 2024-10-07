@@ -185,5 +185,3 @@ variable "sku_name" {
   default     = "Standard"
   description = "The SKU which should be used. At this time the only supported value is Standard. Defaults to Standard."
 }
-
-
