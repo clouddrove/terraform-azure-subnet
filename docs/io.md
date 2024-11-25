@@ -5,6 +5,7 @@
 | allocation\_method | Defines the allocation method for this IP address. Possible values are Static or Dynamic. | `string` | `"Static"` | no |
 | bgp\_route\_propagation\_enabled | Boolean flag which controls propagation of routes learned by BGP on that route table. | `bool` | `true` | no |
 | create\_nat\_gateway | Flag to control nat gateway creation. | `bool` | `false` | no |
+| default\_outbound\_access\_enabled | Enable default outbound access to the internet for the subnet. Defaults to true. | `bool` | `true` | no |
 | delegation | Configuration delegations on subnet<br>object({<br>  name = object({<br>    name = string,<br>    actions = list(string)<br>  })<br>}) | `map(list(any))` | `{}` | no |
 | enable | Flag to control the module creation | `bool` | `true` | no |
 | enable\_route\_table | Flag to control route table creation. | `bool` | `true` | no |
