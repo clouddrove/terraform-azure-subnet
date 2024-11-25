@@ -187,3 +187,8 @@ variable "sku_name" {
 }
 
 
+variable "default_outbound_access_enabled " {
+  type        = bool
+  default     = true
+  description = "Enable default outbound access to the internet for the subnet. Defaults to true."
+}
