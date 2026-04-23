@@ -1,48 +1,75 @@
-> ⚠️ **Module Deprecated – Repository Moved**
+# 🔄 Repository Migration Notice ⚠️ DEPRECATED
 
-This Terraform module is no longer maintained under the **CloudDrove** organization:
+This module has been migrated to a new organization and is no longer actively maintained here.
 
-**Old repository:** https://github.com/clouddrove/terraform-azure-subnet
+## 📦 New Module Location
 
-The module has been permanently migrated to the **terraform-az-modules** organization:
+All Azure Terraform modules previously hosted under:
+```
+clouddrove/terraform-azure-*
+```
 
-**➡️ New home:** https://github.com/terraform-az-modules/terraform-azurerm-subnet
+have been migrated to:
+```
+terraform-az-modules/terraform-azurerm-*
+```
 
----
+## 🔁 Mapping Convention
 
-## What This Means
+The module naming remains consistent following this pattern:
 
-- ✅ Existing deployments will continue to work without interruption.
-- 🛠 No fix backported to this old repo (if needed).
-- 🚫 No new features or enhancements will be added here.
-- 📦 All **new deployments and upgrades MUST use the module from `terraform-az-modules`**.
+| Old Repository | New Repository |
+|---|---|
+| `terraform-azure-<resource>` | `terraform-azurerm-<resource>` |
 
----
+### Examples
 
-## How to Migrate
+- `clouddrove/terraform-azure-vnet` → `terraform-az-modules/terraform-azurerm-vnet`
+- `clouddrove/terraform-azure-aks` → `terraform-az-modules/terraform-azurerm-aks`
+- `clouddrove/terraform-azure-storage` → `terraform-az-modules/terraform-azurerm-storage`
 
-Simply update the `source` reference in your Terraform configuration.
+## 🚀 What You Should Do
 
-### If you are using a Git source:
+### Update your Terraform module source:
 
-**Before (CloudDrove org):**
+**❌ Old:**
 ```hcl
 module "example" {
-   source      = "clouddrove/subnet/azure"
+  source = "github.com/clouddrove/terraform-azure-<resource>"
 }
 ```
 
-**After (Terraform-az-modules org):**
+**✅ New:**
 ```hcl
 module "example" {
-   source      = "terraform-az-modules/subnet/azurerm"
+  source = "github.com/terraform-az-modules/terraform-azurerm-<resource>"
 }
 ```
-## 📌 Issues, Discussions & Pull Requests
 
-Going forward:
+## ⚠️ Important Notes
 
-- 🚀 **All issues, feature requests, and pull requests must be created in the new repository:**
-  **https://github.com/terraform-az-modules/terraform-azurerm-subnet**
+- ❌ **No new features or fixes** will be added to this repository
+- 🛠️ **Only critical fixes** (if any) may be applied
+- ✅ **All active development** continues in the new organization
 
-- 📚 This old **CloudDrove** repository is now **read-only**, retained only for historical reference.
+## 📚 Why the Migration?
+
+This move helps to:
+
+- Standardize module naming (`azurerm` provider alignment)
+- Improve maintainability and structure
+- Enable better versioning and scalability across modules
+
+## 🤝 Support
+
+For issues, enhancements, or contributions, please use the new repository:
+
+👉 **[https://github.com/terraform-az-modules](https://github.com/terraform-az-modules)**
+
+## 📣 Final Note
+
+If you're still using this module, it's **strongly recommended** to migrate to the new location to stay up to date with improvements and fixes.
+
+---
+
+**Last Updated:** April 2026
